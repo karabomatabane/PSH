@@ -1,0 +1,86 @@
+<div class="jumbotron text-center ">
+    <!--Please enter something nice for this page-->
+    <h1>Get a Quote</h1>
+</div>
+
+<form method="post">
+    <div class="form-group">
+        <label>First name</label>
+        <input type="text" asp-for="@Model.Firstname" class="form-control" placeholder="Enter your name">
+        <span class="text-danger" asp-validation-for="@Model.Firstname"></span>
+    </div>
+    <div class="form-group">
+        <label>Last name</label>
+        <input type="text" asp-for="@Model.Lastname" class="form-control" placeholder="Enter your last name">
+        <span class="text-danger" asp-validation-for="@Model.Lastname"></span>
+    </div>
+    <div class="form-group">
+        <label>Phone number</label>
+        <input type="text" asp-for="@Model.PhoneNumber" class="form-control" placeholder="Enter your contact Number">
+        <span class="text-danger" asp-validation-for="@Model.PhoneNumber"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Moving From</label>
+        <select class="form-control">
+            <option value="">--- Select Province ---</option>
+            <option value="">KwaZulu-Natal</option>
+            <option value="">Gauteng</option>
+            <option value="">Free State</option>
+            <option value="">Eastern Cape</option>
+            <option value="">Northern Cape</option>
+            <option value="">Western Cape</option>
+            <option value="">North West</option>
+            <option value="">Mpumalanga</option>
+            <option value="">Limpopo</option>
+        </select>
+        <span class="text-danger" asp-validation-for="@Model.MovingFrom"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Suburb To</label>
+        <select class="form-control">
+            <option value="">--- Select Province ---</option>
+            <option value="">KwaZulu-Natal</option>
+            <option value="">Gauteng</option>
+            <option value="">Free State</option>
+            <option value="">Eastern Cape</option>
+            <option value="">Northern Cape</option>
+            <option value="">Western Cape</option>
+            <option value="">North West</option>
+            <option value="">Mpumalanga</option>
+            <option value="">Limpopo</option>
+        </select>
+        <span class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label>Suburb from</label>
+        <input type="text" class="form-control" placeholder="Enter suburb of collection">
+        <span class="text-danger" hidden>Please enter a suburb</span>
+    </div>
+
+    <div class="form-group">
+        <label>Moving to</label>
+        <input type="text" class="form-control" placeholder="Enter suburb of the delivery of the package">
+        <span class="text-danger" hidden>Please enter a suburb</span>
+    </div>
+
+    <div class="form-check form-group">
+        <input class="form-check-input" type="radio" name="res" id="res" value="0" checked />
+        <label class="form-check-label" for="res"> Residential move</label>
+    </div>
+
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="office" id="office" value="1" />
+        <label class="form-check-label" for="office"> Office move</label>
+    </div>
+
+    <div class="form-group">
+        <textarea class="form-control" placeholder="Enter Additional information"></textarea>
+        <span class="text-danger" asp-validation-for="@Model.Message"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-4 rounded-pill">Send Request</button>
+
+</form>
