@@ -11,13 +11,4 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  activate(i: number) {
-    let links = document.getElementsByClassName('nav-item');
-    console.log(links);
-    for (let x = 0; x < links.length; x++) {
-      links[x].classList.remove('active');
-    }
-    links[i].classList.add('active')
-  }
 }

@@ -11,23 +11,49 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <form action="">
+            <form [formGroup]="FormData" (ngSubmit)="onSubmit(FormData.value)">
               <div>
-                <input type="text" placeholder="Name" />
+                <span class="text-danger form-text"
+                                *ngIf="(formControls.name.touched) && formControls.name.errors?.required">
+                                Name is required
+                            </span>
+                <input type="text" formControlName="name" placeholder="Name" />
               </div>
               <div>
-                <input type="email" placeholder="Email" />
+                <span class="text-danger form-text"
+                                *ngIf="(formControls.email.touched) && formControls.email.errors?.required">
+                                Email is required
+                            </span>
+                            <span class="text-danger form-text"
+                                *ngIf="(formControls.email.touched) && formControls.email.errors?.email">
+                                Email is invalid
+                            </span>
+                <input type="email" formControlName="email" placeholder="Email" />
               </div>
               <div>
-                <input type="text" placeholder="Phone Number" />
+                <span class="text-danger form-text"
+                                *ngIf="(formControls.phoneNumber.touched) && formControls.phoneNumber.errors?.required">
+                                Phone number is required
+                            </span>
+                <span class="text-danger form-text"
+                                *ngIf="(formControls.phoneNumber.touched) && formControls.phoneNumber.errors?.minlength">
+                                Phone number must at least be 10 numbers
+                            </span>
+                <span class="text-danger form-text"
+                                *ngIf="(formControls.phoneNumber.touched) && formControls.phoneNumber.errors?.maxlength">
+                                Phone number must at most be 11 numbers and a plus (+) sign
+                            </span>
+                <input type="text" formControlName="phoneNumber" placeholder="Phone Number" />
               </div>
               <div>
-                <input type="text" class="message-box" placeholder="Message" />
+                <span class="text-danger form-text"
+                                *ngIf="(formControls.message.touched) && formControls.message.errors?.required">
+                                Message is required
+                            </span>
+                <input type="text" formControlName="message" class="message-box" placeholder="Message" />
               </div>
               <div class="d-flex ">
-                <button class="rounded-pill">
-                  SEND
-                </button>
+                <button type="submit" [disabled]="!FormData.valid" class="btn btn-primary mt-4 rounded-pill">Send</button>
               </div>
             </form>
           </div>
@@ -43,18 +69,3 @@
     </section>
   
     <!-- end contact section -->
-  
-<!-- footer section -->
-<footer class="container-fluid footer_section mt-5" style="padding-bottom: 0;">
-  <div class="container">
-      <div class="row">
-          <div class="col-lg-7 col-md-9 mx-auto">
-              <p>
-                  &copy; 2019 All Rights Reserved By
-                  <a href="#">Insane IT Solutions</a>
-              </p>
-          </div>
-      </div>
-  </div>
-</footer>
-<!-- footer section -->
