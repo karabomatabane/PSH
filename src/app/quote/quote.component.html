@@ -95,13 +95,8 @@
         <input type="text" formControlName="suburbTo" class="form-control"
             placeholder="Enter suburb of the delivery of the package">
     </div>
-
     <div class="form-check form-group">
-        <span class="text-danger form-text"
-        *ngIf="(formControls.typeOfMove.touched) && formControls.suburbFrom.errors?.required">
-        Type of move is required
-    </span>
-        <input class="form-check-input" formControlName="typeOfMove" type="radio" id="res" value="res" checked />
+        <input class="form-check-input" formControlName="typeOfMove" type="radio" id="res" value="res" />
         <label class="form-check-label" for="res"> Residential move</label>
     </div>
 
@@ -114,6 +109,6 @@
         <textarea class="form-control" formControlName="additionalInfo"
             placeholder="Enter Additional information"></textarea>
     </div>
-
+    <div class="mt-3"><span *ngIf="!FormData.valid" class="form-text">Complete form to enable button</span></div>
     <button type="submit" [disabled]="!FormData.valid" class="btn btn-primary mt-4 rounded-pill"> Send Request</button>
 </form>

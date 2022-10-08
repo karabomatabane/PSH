@@ -22,7 +22,7 @@ export class QuoteComponent implements OnInit {
     movingTo: new FormControl('', [Validators.required]),
     suburbFrom: new FormControl('', [Validators.required]),
     suburbTo: new FormControl('', [Validators.required]),
-    typeOfMove: new FormControl('', [Validators.required]),
+    typeOfMove: new FormControl('res', [Validators.required]),
     additionalInfo: new FormControl(''),
     })
   }
