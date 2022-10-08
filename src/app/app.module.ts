@@ -5,6 +5,7 @@ import {TabsModule} from 'ngx-bootstrap/tabs'
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
 import {ButtonsModule} from 'ngx-bootstrap/buttons'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import { NavComponent } from './nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactComponent } from './contact/contact.component';
 import { QuoteComponent } from './quote/quote.component'
+import { ContactService } from './contact.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,7 @@ import { QuoteComponent } from './quote/quote.component'
     AboutComponent,
     NavComponent,
     ContactComponent,
-    QuoteComponent
+    QuoteComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,9 +36,11 @@ import { QuoteComponent } from './quote/quote.component'
     PaginationModule.forRoot(),
     ButtonsModule.forRoot(),
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
 
   ],
-  providers: [],
+  providers: [ContactService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

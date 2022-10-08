@@ -3,84 +3,117 @@
     <h1>Get a Quote</h1>
 </div>
 
-<form method="post">
+<form [formGroup]="FormData" (ngSubmit)="onSubmit(FormData.value)">
     <div class="form-group">
         <label>First name</label>
-        <input type="text" asp-for="@Model.Firstname" class="form-control" placeholder="Enter your name">
-        <span class="text-danger" asp-validation-for="@Model.Firstname"></span>
+        <span class="text-danger form-text"
+            *ngIf="(formControls.firstName.touched) && formControls.firstName.errors?.required">
+            First Name is required
+        </span>
+        <input type="text" formControlName="firstName" class="form-control" placeholder="Enter your name">
     </div>
     <div class="form-group">
         <label>Last name</label>
-        <input type="text" asp-for="@Model.Lastname" class="form-control" placeholder="Enter your last name">
-        <span class="text-danger" asp-validation-for="@Model.Lastname"></span>
+        <span class="text-danger form-text"
+            *ngIf="(formControls.lastName.touched) && formControls.lastName.errors?.required">
+            Last Name is required
+        </span>
+        <input type="text" formControlName="lastName" class="form-control" placeholder="Enter your last name">
     </div>
     <div class="form-group">
         <label>Phone number</label>
-        <input type="text" asp-for="@Model.PhoneNumber" class="form-control" placeholder="Enter your contact Number">
-        <span class="text-danger" asp-validation-for="@Model.PhoneNumber"></span>
+        <span class="text-danger form-text"
+            *ngIf="(formControls.phoneNumber.touched) && formControls.phoneNumber.errors?.required">
+            Phone number is required
+        </span>
+        <span class="text-danger form-text"
+            *ngIf="(formControls.phoneNumber.touched) && formControls.phoneNumber.errors?.minlength">
+            Phone number must at least be 10 numbers
+        </span>
+        <span class="text-danger form-text"
+            *ngIf="(formControls.phoneNumber.touched) && formControls.phoneNumber.errors?.maxlength">
+            Phone number must at most be 11 numbers and a plus (+) sign
+        </span>
+        <input type="text" formControlName="phoneNumber" class="form-control" placeholder="Enter your contact Number">
     </div>
 
     <div class="form-group">
         <label>Moving From</label>
-        <select class="form-control">
+        <span class="text-danger form-text"
+            *ngIf="(formControls.movingFrom.touched) && formControls.movingFrom.errors?.required">
+            Province is required
+        </span>
+        <select class="form-control" formControlName="movingFrom">
             <option value="">--- Select Province ---</option>
-            <option value="">KwaZulu-Natal</option>
-            <option value="">Gauteng</option>
-            <option value="">Free State</option>
-            <option value="">Eastern Cape</option>
-            <option value="">Northern Cape</option>
-            <option value="">Western Cape</option>
-            <option value="">North West</option>
-            <option value="">Mpumalanga</option>
-            <option value="">Limpopo</option>
+            <option value="KZN">KwaZulu-Natal</option>
+            <option value="GP">Gauteng</option>
+            <option value="FS">Free State</option>
+            <option value="EC">Eastern Cape</option>
+            <option value="NC">Northern Cape</option>
+            <option value="WC">Western Cape</option>
+            <option value="NW">North West</option>
+            <option value="MP">Mpumalanga</option>
+            <option value="LP">Limpopo</option>
         </select>
-        <span class="text-danger" asp-validation-for="@Model.MovingFrom"></span>
     </div>
 
     <div class="form-group">
-        <label>Suburb To</label>
-        <select class="form-control">
+        <label>Moving To</label>
+        <span class="text-danger form-text"
+            *ngIf="(formControls.movingTo.touched) && formControls.movingTo.errors?.required">
+            Province is required
+        </span>
+        <select class="form-control" formControlName="movingTo">
             <option value="">--- Select Province ---</option>
-            <option value="">KwaZulu-Natal</option>
-            <option value="">Gauteng</option>
-            <option value="">Free State</option>
-            <option value="">Eastern Cape</option>
-            <option value="">Northern Cape</option>
-            <option value="">Western Cape</option>
-            <option value="">North West</option>
-            <option value="">Mpumalanga</option>
-            <option value="">Limpopo</option>
+            <option value="KZN">KwaZulu-Natal</option>
+            <option value="GP">Gauteng</option>
+            <option value="FS">Free State</option>
+            <option value="EC">Eastern Cape</option>
+            <option value="NC">Northern Cape</option>
+            <option value="WC">Western Cape</option>
+            <option value="NW">North West</option>
+            <option value="MP">Mpumalanga</option>
+            <option value="LP">Limpopo</option>
         </select>
-        <span class="text-danger"></span>
     </div>
 
     <div class="form-group">
         <label>Suburb from</label>
-        <input type="text" class="form-control" placeholder="Enter suburb of collection">
-        <span class="text-danger" hidden>Please enter a suburb</span>
+        <span class="text-danger form-text"
+            *ngIf="(formControls.suburbFrom.touched) && formControls.suburbFrom.errors?.required">
+            Suburb is required
+        </span>
+        <input type="text" formControlName="suburbFrom" class="form-control" placeholder="Enter suburb of collection">
     </div>
 
     <div class="form-group">
-        <label>Moving to</label>
-        <input type="text" class="form-control" placeholder="Enter suburb of the delivery of the package">
-        <span class="text-danger" hidden>Please enter a suburb</span>
+        <label>Suburb to</label>
+        <span class="text-danger form-text"
+            *ngIf="(formControls.suburbFrom.touched) && formControls.suburbFrom.errors?.required">
+            Suburb is required
+        </span>
+        <input type="text" formControlName="suburbTo" class="form-control"
+            placeholder="Enter suburb of the delivery of the package">
     </div>
 
     <div class="form-check form-group">
-        <input class="form-check-input" type="radio" name="res" id="res" value="0" checked />
+        <span class="text-danger form-text"
+        *ngIf="(formControls.typeOfMove.touched) && formControls.suburbFrom.errors?.required">
+        Type of move is required
+    </span>
+        <input class="form-check-input" formControlName="typeOfMove" type="radio" id="res" value="res" checked />
         <label class="form-check-label" for="res"> Residential move</label>
     </div>
 
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="office" id="office" value="1" />
+        <input class="form-check-input" formControlName="typeOfMove" type="radio" id="office" value="office" />
         <label class="form-check-label" for="office"> Office move</label>
     </div>
 
     <div class="form-group">
-        <textarea class="form-control" placeholder="Enter Additional information"></textarea>
-        <span class="text-danger" asp-validation-for="@Model.Message"></span>
+        <textarea class="form-control" formControlName="additionalInfo"
+            placeholder="Enter Additional information"></textarea>
     </div>
 
-    <button type="submit" class="btn btn-primary mt-4 rounded-pill">Send Request</button>
-
+    <button type="submit" [disabled]="!FormData.valid" class="btn btn-primary mt-4 rounded-pill"> Send Request</button>
 </form>
