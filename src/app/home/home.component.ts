@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as internal from 'stream';
 import { trigger, transition, style, animate } from '@angular/animations';
+import * as $ from 'jquery'
 
 @Component({
   selector: 'app-home',

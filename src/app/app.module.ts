@@ -29,6 +29,7 @@ import { ContactService } from './contact.service';
   ],
   imports: [
     BrowserModule,
+    BsDropdownModule,
     AppRoutingModule,
     HttpClientModule,
     TabsModule.forRoot(),
